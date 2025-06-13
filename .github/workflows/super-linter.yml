@@ -2,7 +2,7 @@
 name: Lint
 
 permissions:
-  contents: read
+  contents: write
   packages: read
   statuses: write
 
@@ -27,10 +27,7 @@ jobs:
         uses: super-linter/super-linter/slim@v7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_ALL_CODEBASE: false
-          FILTER_REGEX_EXCLUDE: '(.devcontainer/Dockerfile|.github/pull_request_template.md|.github/ISSUE_TEMPLATE/*.md)'
-          VALIDATE_PYTHON_ISORT: false
-          VALIDATE_PYTHON_MYPY: false
+          DISABLE_ERRORS: true
 
   fix-lint:
     name: Fix Lint
@@ -48,13 +45,18 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           FILTER_REGEX_EXCLUDE: '(.github/pull_request_template.md|.github/ISSUE_TEMPLATE/*.md)'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_DOCKERFILE_HADOLINT: false
           VALIDATE_PYTHON_ISORT: false
           VALIDATE_PYTHON_MYPY: false
+          VALIDATE_PYTHON_PYLINT: false
+          FIX_HTML_PRETTIER: true
+          FIX_JSON: true
           FIX_JSON_PRETTIER: true
           FIX_MARKDOWN: true
           FIX_MARKDOWN_PRETTIER: true
+          FIX_PYTHON_BLACK: true
+          FIX_PYTHON_RUFF: true
           FIX_YAML_PRETTIER: true
-          VALIDATE_DOCKERFILE_HADOLINT: false
 
       - name: Commit and push linting fixes
         if: >

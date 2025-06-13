@@ -51,7 +51,7 @@ jobs:
           BUMP="patch"
           echo "$LABELS" | grep -q 'type: feature' && BUMP="minor"
           echo "$LABELS" | grep -q 'type: security' && BUMP="minor"
-          echo "$LABELS" | grep -q 'type: breaking' && BUMP="major"
+          echo "$LABELS" | grep -q 'special: breaking change' && BUMP="major"
           echo "bump=$BUMP" >> "$GITHUB_OUTPUT"
 
       - name: Get latest tag

@@ -7,19 +7,19 @@
     "files.trimTrailingWhitespace": true,
     "files.exclude": {
         "**/__pycache__": true,
-        "**/.pytest_cache": true
+        "**/.pytest_cache": true,
+        "**/*.egg-info": true
     },
     "[python]": {
-        "editor.rulers": [88],
+        "editor.rulers": [80],
         "editor.defaultFormatter": "ms-python.black-formatter",
-        "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
+            "source.organizeImports": "always"
         }
     },
     "isort.args": ["--profile", "black"],
     "triggerTaskOnSave.tasks": {
-        "Run on test file": ["tests/**/test_*.py"],
+        "Run file tests": ["tests/**/test_*.py"],
         "Run all tests": ["app/**/*.py", "!tests/**"]
     },
     "python.testing.unittestEnabled": false,

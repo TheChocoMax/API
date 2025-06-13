@@ -187,3 +187,7 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# # Super Linter output
+github_conf/branch_protection_rules.json
+super-linter-output/super-linter-summary.md

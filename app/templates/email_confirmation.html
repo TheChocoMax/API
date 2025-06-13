@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Email Confirmation</title>
+
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background: #efefef;
+                display: flex;
+                font-family: sans-serif;
+                width: 100%;
+            }
+
+            h1 {
+                background-color: #3e2723;
+                border-radius: 5px;
+                color: white;
+                padding: 5px 10px;
+                text-align: center;
+                width: 100%;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+
+            .message {
+                font-size: 16px;
+            }
+
+            .content {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                justify-content: center;
+                gap: 40px;
+                padding: 20px;
+            }
+
+            .card {
+                display: flex;
+                flex-direction: column;
+                background: white;
+                width: 40%;
+                border-radius: 10px;
+                padding: 50px;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .btn {
+                align-self: center;
+                background-color: #3e2723;
+                border: none;
+                border-radius: 10px;
+                color: #d7ccc8;
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: bold;
+                padding: 15px 0;
+                text-decoration: none;
+                width: clamp(250px, 75%, 350px);
+            }
+
+            .footer {
+                color: #888;
+                font-size: 14px;
+            }
+
+            @media screen and (width<=850px) {
+                .card {
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="content">
+            <h1>{{ title }}</h1>
+            <div class="card">
+                <h3>Hello!</h3>
+                <p class="message">
+                    Thank you for signing up! Please confirm your email address
+                    to complete your account creation.
+                </p>
+                <a class="btn" href="{{ confirmation_url }}" target="_blank">
+                    Confirm Your Email
+                </a>
+                <p class="footer">
+                    If you did not request this, please ignore this email.
+                </p>
+                <p class="footer">
+                    <strong>Note:</strong> This confirmation link is valid for
+                    24 hours.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

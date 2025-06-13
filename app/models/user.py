@@ -9,7 +9,7 @@ and timestamps for creation, updates, login, and deletion.
 import uuid
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, DateTime, Integer, String, Text
+from sqlalchemy import Boolean, Column, DateTime, Integer, Text
 from sqlalchemy.dialects.postgresql import UUID
 
 from app.models import Base
@@ -44,7 +44,7 @@ class User(Base):
 
     user_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
-    username = Column(String(50), unique=True, nullable=False)
+    username = Column(Text, unique=True, nullable=False)
 
     email_encrypted = Column(Text, nullable=False)
     email_hash = Column(Text, unique=True, nullable=False)

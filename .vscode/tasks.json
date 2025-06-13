@@ -5,64 +5,52 @@
             "label": "Delete old Git branches",
             "type": "shell",
             "command": "git fetch --prune && git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D",
-            "problemMatcher": [],
             "presentation": {
                 "showReuseMessage": false
-            }
+            },
+            "problemMatcher": []
         },
         {
             "label": "Package app",
             "type": "shell",
             "command": "rm -rf build dist *.egg-info && python -m build",
-            "problemMatcher": [],
-            "runOptions": {
-                "runOn": "default"
+            "group": {
+                "kind": "build",
+                "isDefault": true
             },
             "presentation": {
                 "panel": "dedicated"
             },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "problemMatcher": []
         },
         {
             "label": "Run all tests",
             "type": "shell",
             "command": "python3 -m pytest tests",
             "group": "build",
-            "problemMatcher": [],
-            "runOptions": {
-                "runOn": "default"
-            }
-        },
-        {
-            "label": "Run on test file",
-            "type": "shell",
-            "command": "python3 -m pytest '${relativeFile}' -v -x",
-            "group": {
-                "kind": "test"
-            },
             "presentation": {
                 "close": true
             },
-            "problemMatcher": [],
-            "runOptions": {
-                "runOn": "default",
-            }
+            "problemMatcher": []
+        },
+        {
+            "label": "Run file tests",
+            "type": "shell",
+            "command": "python3 -m pytest '${file}' -v -x",
+            "group": {
+                "kind": "test"
+            },
+            "problemMatcher": []
         },
         {
             "label": "Start FastAPI server",
             "type": "shell",
             "command": "uvicorn app.main:app --reload",
-            "problemMatcher": [],
-            "runOptions": {
-                "runOn": "default"
-            },
             "presentation": {
                 "panel": "dedicated",
                 "close": true
-            }
+            },
+            "problemMatcher": []
         }
     ]
 }
